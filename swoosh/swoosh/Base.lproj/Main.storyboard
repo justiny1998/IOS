@@ -116,7 +116,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qs-jm-pgI" customClass="BorderButton" customModule="swoosh" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qs-jm-pgI" customClass="BorderButton" customModule="swoosh" customModuleProvider="target">
                                 <rect key="frame" x="16" y="597" width="343" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -144,6 +144,9 @@
                                         <state key="normal" title="Mens">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onMensTapped:" destination="Ifk-tM-vSC" eventType="touchUpInside" id="Mgf-7a-o5S"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSF-zs-0IO" customClass="BorderButton" customModule="swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="65" width="343" height="50"/>
@@ -155,6 +158,9 @@
                                         <state key="normal" title="Womens">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onWomensTapped:" destination="Ifk-tM-vSC" eventType="touchUpInside" id="0Kp-Sv-AsR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qt-GC-8cU" customClass="BorderButton" customModule="swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="130" width="343" height="50"/>
@@ -166,6 +172,9 @@
                                         <state key="normal" title="Co-ed">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCoEdTapped:" destination="Ifk-tM-vSC" eventType="touchUpInside" id="t8o-4F-ssH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -202,6 +211,10 @@
                         <viewLayoutGuide key="safeArea" id="oWF-GI-cvw"/>
                     </view>
                     <connections>
+                        <outlet property="coedBtn" destination="0Qt-GC-8cU" id="lFj-Nb-hz9"/>
+                        <outlet property="mensBtn" destination="4T2-MU-bCc" id="GgD-Aw-lh4"/>
+                        <outlet property="nextBtn" destination="0qs-jm-pgI" id="iaJ-pi-kUh"/>
+                        <outlet property="womensBtn" destination="VSF-zs-0IO" id="JoB-E0-TLw"/>
                         <segue destination="5qv-aI-ZZs" kind="show" identifier="skillVCSegue" id="Dar-03-Dei"/>
                     </connections>
                 </viewController>
@@ -278,14 +291,26 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="vIZ-lH-fFI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                <state key="normal" title="Next">
+                                <state key="normal" title="Finish">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wan-O3-Sxf">
+                                <rect key="frame" x="16" y="30" width="29" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="29" id="H2Y-7d-4DT"/>
+                                    <constraint firstAttribute="height" constant="24" id="Zkw-wo-BXB"/>
+                                </constraints>
+                                <state key="normal" image="backButton"/>
+                                <connections>
+                                    <segue destination="Ifk-tM-vSC" kind="show" id="jEg-4W-XPU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cdn-jT-N4e" firstAttribute="trailing" secondItem="fRF-J0-zP1" secondAttribute="trailing" constant="16" id="0Bt-TW-ea3"/>
+                            <constraint firstItem="Wan-O3-Sxf" firstAttribute="top" secondItem="cdn-jT-N4e" secondAttribute="top" constant="10" id="4aN-my-LA3"/>
                             <constraint firstItem="cdn-jT-N4e" firstAttribute="trailing" secondItem="ROl-SH-hRX" secondAttribute="trailing" constant="16" id="5V0-hI-wC6"/>
                             <constraint firstItem="aBr-eF-5VR" firstAttribute="leading" secondItem="cdn-jT-N4e" secondAttribute="leading" id="Cip-kZ-1ZE"/>
                             <constraint firstItem="oRu-qr-WOX" firstAttribute="leading" secondItem="cdn-jT-N4e" secondAttribute="leading" constant="16" id="Gk2-Rm-xOl"/>
@@ -296,6 +321,7 @@
                             <constraint firstItem="cdn-jT-N4e" firstAttribute="bottom" secondItem="fRF-J0-zP1" secondAttribute="bottom" constant="20" id="bhM-ap-OT5"/>
                             <constraint firstItem="aBr-eF-5VR" firstAttribute="trailing" secondItem="cdn-jT-N4e" secondAttribute="trailing" id="cfw-OR-MIK"/>
                             <constraint firstItem="ROl-SH-hRX" firstAttribute="top" secondItem="cdn-jT-N4e" secondAttribute="top" constant="20" id="dLt-XV-7xn"/>
+                            <constraint firstItem="Wan-O3-Sxf" firstAttribute="leading" secondItem="cdn-jT-N4e" secondAttribute="leading" constant="16" id="db5-6d-JIO"/>
                             <constraint firstItem="ROl-SH-hRX" firstAttribute="leading" secondItem="cdn-jT-N4e" secondAttribute="leading" constant="16" id="gdJ-ZO-bfv"/>
                             <constraint firstItem="fRF-J0-zP1" firstAttribute="leading" secondItem="cdn-jT-N4e" secondAttribute="leading" constant="16" id="zex-Pk-lb0"/>
                         </constraints>
@@ -314,4 +340,7 @@
         <image name="swooshLogo" width="119" height="20"/>
         <image name="welcomeScreenBG" width="414" height="736"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jEg-4W-XPU"/>
+    </inferredMetricsTieBreakers>
 </document>
