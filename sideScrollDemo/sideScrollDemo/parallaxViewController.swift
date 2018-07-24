@@ -12,8 +12,6 @@ struct scrollViewDataStruct {
     let title : String?
     let foreground : UIImage?
     let background : UIImage?
-    
-    
 }
 
 class parallaxViewController: UIViewController, UIScrollViewDelegate {
@@ -24,6 +22,7 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
     var scrollViewData = [scrollViewDataStruct]()
     var frame: CGRect = CGRect(x:0, y:0, width:0, height:0)
     
+    //Unique tag numbers in order to guarentee that no two views have the same "tag", if you ever decide to add another view just multiply the highest tag number by 10, e.g if you add a new view after BackTageValue, the next tag value should be 10000
     var BackViewTagValue = 1000
     var ForeViewTagValue = 10
     var tagValue = 100
@@ -33,7 +32,6 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
         configurePageControl()
 
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         
@@ -47,21 +45,24 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
         
+        //Currently due to sizing the right and left sides have white gaps, so fill them in with images
+        let sideViewLeft = CustomView(frame: CGRect(x: 100,y: 0,width: self.scrollView.frame.width-180, height: self.scrollView.frame.height-90))
+        sideViewLeft.imageView.image = #imageLiteral(resourceName: "image_part_001-1.png")
+        sideViewLeft.tag = 10000
+        self.scrollView.addSubview(sideViewLeft)
+        
+        let sideViewRight = CustomView(frame: CGRect(x: 1005,y: 0,width: self.scrollView.frame.width-180, height: self.scrollView.frame.height-90))
+        sideViewRight.imageView.image = #imageLiteral(resourceName: "image_part_006.png")
+        sideViewRight.tag = 100000
+        self.scrollView.addSubview(sideViewRight)
+        
+        //Array containing data for each "slide" of the page view
         scrollViewData = [scrollViewDataStruct.init(title: "Now time ", foreground: #imageLiteral(resourceName: "image_part_001"), background: #imageLiteral(resourceName: "image_part_002-1")),
                           scrollViewDataStruct.init(title: "to figure out", foreground: #imageLiteral(resourceName: "image_part_002"), background: #imageLiteral(resourceName: "image_part_003-1")),
                           scrollViewDataStruct.init(title: "how to parallax", foreground: #imageLiteral(resourceName: "image_part_003"), background: #imageLiteral(resourceName: "image_part_004-1")),
                           scrollViewDataStruct.init(title: "images", foreground: #imageLiteral(resourceName: "image_part_004"), background: #imageLiteral(resourceName: "image_part_005"))]
         
         scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(scrollViewData.count)
-        
-        //adding part 1 of background, seperate from the other views.
-        let sideViewLeft = CustomView(frame: CGRect(x: 100,y: 0,width: self.scrollView.frame.width-180, height: self.scrollView.frame.height-90))
-        sideViewLeft.imageView.image = #imageLiteral(resourceName: "image_part_001-1.png")
-        sideViewLeft.tag = 10000
-        self.scrollView.addSubview(sideViewLeft)
-        //print("HEIGHT IS \(self.scrollView.frame.height-90)" )
-        
-        
         
         var i = 0
         for data in scrollViewData{
@@ -72,7 +73,6 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
             view2.tag = i + BackViewTagValue
             //THIS IS WHERE TO ADD SUBVIEWS... CREATE IN STORY BOARDS?
             self.scrollView.addSubview(view2)
-            print("HEIGHT IS \(self.scrollView.frame.height-90)" )
             
             let view = CustomView(frame: CGRect(x: (self.scrollView.frame.width * CGFloat(i)),y: 300,width: self.scrollView.frame.width, height: self.scrollView.frame.height - 90))
             view.imageView.image = data.foreground
@@ -86,23 +86,12 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
             label.textColor = UIColor.black
             label.sizeToFit()
             label.tag = i + tagValue
-            if i == 0{
-                label.center.x = view.center.x
-            } else {
-                label.center.x = view.center.x - self.scrollView.frame.width / 2
-            }
-          
+            label.center.x = view.center.x
+            
             self.scrollView.addSubview(label)
             
             i += 1
         }
-        
-        let sideViewRight = CustomView(frame: CGRect(x: 1005,y: 0,width: self.scrollView.frame.width-180, height: self.scrollView.frame.height-90))
-        sideViewRight.imageView.image = #imageLiteral(resourceName: "image_part_006.png")
-        sideViewRight.tag = 100000
-        self.scrollView.addSubview(sideViewRight)
-        //print("HEIGHT IS \(self.scrollView.frame.height-90)" )
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -114,13 +103,17 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
                 let backgroundLeft = scrollView.viewWithTag(10000) as! CustomView
                 let backgroundRight = scrollView.viewWithTag(100000) as! CustomView
                 let scrollContentOffset = scrollView.contentOffset.x + self.scrollView.frame.width
-                let viewOffset = (view.center.x - scrollView.bounds.width / 4) - scrollContentOffset
-                label.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset / 2))
+                
+                let viewOffset = (label.center.x - scrollView.bounds.width / 4) - scrollContentOffset
+                let viewOff = (scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset / 2)) + 50) * 0.6
+                view.center.x = viewOff+CGFloat(210 * i)
                 view2.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset / 2)) + 50
                 backgroundLeft.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset / 2)) - 695
                 backgroundRight.center.x = scrollContentOffset - ((scrollView.bounds.width / 4 - viewOffset / 2)) + 245
-                print(backgroundLeft.center.x)
-                print(backgroundRight.center.x)
+                
+//                print(backgroundLeft.center.x)
+//                print(backgroundRight.center.x)
+                
             }
         }
     }
@@ -133,7 +126,6 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
         self.pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
         self.pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 1)
         self.view.addSubview(pageControl)
-        
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
@@ -143,7 +135,6 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
     }
@@ -154,7 +145,6 @@ class parallaxViewController: UIViewController, UIScrollViewDelegate {
 }
 
 class CustomView: UIView {
-    
     let imageView : UIImageView = {
         let imageView = UIImageView()
             imageView.translatesAutoresizingMaskIntoConstraints = false
