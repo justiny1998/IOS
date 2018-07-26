@@ -12,6 +12,7 @@
 		0B392BE72107856800243138 /* messengerClone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B392BE52107856800243138 /* messengerClone.xcdatamodeld */; };
 		0B392BE92107856A00243138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B392BE82107856A00243138 /* Assets.xcassets */; };
 		0B392BEC2107856A00243138 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B392BEA2107856A00243138 /* LaunchScreen.storyboard */; };
+		0B918E7A210922670075ADDD /* FriendsContollerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B918E79210922670075ADDD /* FriendsContollerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		0B392BE82107856A00243138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B392BEB2107856A00243138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B392BED2107856A00243138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B918E79210922670075ADDD /* FriendsContollerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsContollerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				0B392BDE2107856700243138 /* AppDelegate.swift */,
 				0B392BE02107856800243138 /* ViewController.swift */,
 				0B392BE82107856A00243138 /* Assets.xcassets */,
+				0B918E79210922670075ADDD /* FriendsContollerHelper.swift */,
 				0B392BEA2107856A00243138 /* LaunchScreen.storyboard */,
 				0B392BED2107856A00243138 /* Info.plist */,
 				0B392BE52107856800243138 /* messengerClone.xcdatamodeld */,
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B918E7A210922670075ADDD /* FriendsContollerHelper.swift in Sources */,
 				0B392BE12107856800243138 /* ViewController.swift in Sources */,
 				0B392BE72107856800243138 /* messengerClone.xcdatamodeld in Sources */,
 				0B392BDF2107856800243138 /* AppDelegate.swift in Sources */,
