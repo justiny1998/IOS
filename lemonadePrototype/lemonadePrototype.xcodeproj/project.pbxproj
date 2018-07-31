@@ -15,6 +15,10 @@
 		0B3BD63A210F693E007349A7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD639210F693E007349A7 /* SWRevealViewController.m */; };
 		0B3BD63F210F6AB3007349A7 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD63E210F6AB3007349A7 /* ChatVC.swift */; };
 		0B3BD641210F6AE4007349A7 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD640210F6AE4007349A7 /* ChannelVC.swift */; };
+		0B3BD643210F9C93007349A7 /* KeyboardBoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD642210F9C93007349A7 /* KeyboardBoundView.swift */; };
+		0B3BD645210FA625007349A7 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD644210FA625007349A7 /* MessageCell.swift */; };
+		0B3BD647210FA939007349A7 /* circleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD646210FA939007349A7 /* circleView.swift */; };
+		0B3BD649210FADAD007349A7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3BD648210FADAD007349A7 /* Message.swift */; };
 		E2812734687E9304C03C92FC /* Pods_lemonadePrototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA859B1D4E87B04DE23D4438 /* Pods_lemonadePrototype.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +35,10 @@
 		0B3BD639210F693E007349A7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = ../../../SWRevealViewControllers/SWRevealViewController.m; sourceTree = "<group>"; };
 		0B3BD63E210F6AB3007349A7 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		0B3BD640210F6AE4007349A7 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
+		0B3BD642210F9C93007349A7 /* KeyboardBoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBoundView.swift; sourceTree = "<group>"; };
+		0B3BD644210FA625007349A7 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		0B3BD646210FA939007349A7 /* circleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleView.swift; sourceTree = "<group>"; };
+		0B3BD648210FADAD007349A7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		32BD38181D2426C5A8A64045 /* Pods-lemonadePrototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lemonadePrototype.release.xcconfig"; path = "Pods/Target Support Files/Pods-lemonadePrototype/Pods-lemonadePrototype.release.xcconfig"; sourceTree = "<group>"; };
 		96730FC66CD231F420B01E8F /* Pods-lemonadePrototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lemonadePrototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-lemonadePrototype/Pods-lemonadePrototype.debug.xcconfig"; sourceTree = "<group>"; };
 		CA859B1D4E87B04DE23D4438 /* Pods_lemonadePrototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lemonadePrototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +113,9 @@
 		0B3BD63C210F6A57007349A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B3BD642210F9C93007349A7 /* KeyboardBoundView.swift */,
+				0B3BD644210FA625007349A7 /* MessageCell.swift */,
+				0B3BD646210FA939007349A7 /* circleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,6 +123,7 @@
 		0B3BD63D210F6A5D007349A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B3BD648210FADAD007349A7 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +223,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-lemonadePrototype/Pods-lemonadePrototype-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -218,6 +232,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -252,11 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B3BD647210FA939007349A7 /* circleView.swift in Sources */,
 				0B3BD63F210F6AB3007349A7 /* ChatVC.swift in Sources */,
 				0B3BD622210F638D007349A7 /* AppDelegate.swift in Sources */,
+				0B3BD649210FADAD007349A7 /* Message.swift in Sources */,
+				0B3BD643210F9C93007349A7 /* KeyboardBoundView.swift in Sources */,
 				0B3BD62A210F638D007349A7 /* lemonadePrototype.xcdatamodeld in Sources */,
 				0B3BD63A210F693E007349A7 /* SWRevealViewController.m in Sources */,
 				0B3BD641210F6AE4007349A7 /* ChannelVC.swift in Sources */,
+				0B3BD645210FA625007349A7 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +423,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWC668C7X8;
 				INFOPLIST_FILE = lemonadePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -424,6 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VWC668C7X8;
 				INFOPLIST_FILE = lemonadePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
